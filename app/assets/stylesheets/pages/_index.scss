@@ -1,3 +1,25 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "chapter";
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: $container-main-color;
+  line-height: 1.6;
+}
+
+.container {
+  margin-top: 48px;
+  margin-bottom: 100px;
+}
+
+a {
+  text-decoration: none;
+}

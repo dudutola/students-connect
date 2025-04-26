@@ -12,6 +12,7 @@ class ChaptersController < ApplicationController
   def show
     @chapter = Chapter.find(params[:id])
     authorize @chapter
+    @lectures = policy_scope(Lecture.where(chapter: @chapter))
 
     all_chapters = Chapter.where(source: @chapter.source).order(:id)
     current_chapter_index = all_chapters.find_index(@chapter)

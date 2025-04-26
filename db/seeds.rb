@@ -14,6 +14,7 @@ puts "Cleaning everything..."
 
 # Delete dependent records first
 Chapter.destroy_all
+Lecture.destroy_all
 
 # Now, delete the users
 User.destroy_all
@@ -34,6 +35,20 @@ odin_chapters.each do |chapter|
     source: "the_odin_project"
   )
   puts "Created chapter #{new_chapter.name}"
+
+  chapter["chapter_groups"].each do |chapter_group|
+    chapter_group["group_lectures"].each do |group_lecture|
+     lecture = Lecture.find_or_create_by!(
+        title: group_lecture["lecture_title"],
+        group_name: chapter_group["group_title"],
+        resource_url: group_lecture["lecture_url"],
+        chapter: new_chapter,
+        source: "the_odin_project"
+      )
+
+      puts "Created lecture #{lecture.title} in chapter #{new_chapter.name}"
+    end
+  end
 end
 
 puts "Everything created for The Odin Project!"

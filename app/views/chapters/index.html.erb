@@ -1,8 +1,10 @@
 <div class="container">
-  <h1>Full Stack Ruby On Rails</h1>
+  <header>
+    <h1 class="odin_header_title">Full Stack Ruby On Rails</h1>
+  </header>
 
-  <div class="guidance-box">
-    <p class="guidance-text">
+  <div class="guidance__box">
+    <p class="guidance__box--text">
      This page contains the topics from the
       <a href="https://www.theodinproject.com/paths/full-stack-ruby-on-rails" target="_blank" class="odin-link">
         Full Stack Ruby on Rails curriculum
@@ -32,9 +34,9 @@
     <% @odin_chapters.each do |chapter| %>
       <% style = topic_styles[chapter.name] || topic_styles["default"] %>
 
-      <div class="topic-card">
+      <div class="topic__card <%= style[:class] %>">
         <%# <%= link_to(chapter_path(chapter), class: "topic-card-link") do %>
-          <div class="topic-content">
+          <div class="topic__card--content">
             <div class="topic-icon">
               <%= raw chapter.icon %>
             </div>

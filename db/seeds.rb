@@ -37,3 +37,20 @@ odin_chapters.each do |chapter|
 end
 
 puts "Everything created for The Odin Project!"
+
+
+le_filepath = File.join(__dir__, "le_data.json")
+le_serialized_data = File.read(le_filepath)
+data = JSON.parse(le_serialized_data)
+
+le_chapters = data["chapters"]
+
+le_chapters.each do |chapter|
+  Chapter.create!(
+    name: chapter["title"],
+    url: chapter["url"],
+    icon: chapter["icon"]
+  )
+end
+
+puts "Chapters created successfully!"

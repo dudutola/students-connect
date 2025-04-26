@@ -1,50 +1,27 @@
 <div class="container">
-  <header>
-    <h1 class="odin_header_title">Full Stack Ruby On Rails</h1>
-  </header>
+  <% if params[:source] == "the_odin_project" %>
+    <header>
+      <h1 class="odin_header_title">Full Stack Ruby On Rails</h1>
+    </header>
 
-  <div class="guidance__box">
-    <p class="guidance__box--text">
-     This page contains the topics from the
-      <a href="https://www.theodinproject.com/paths/full-stack-ruby-on-rails" target="_blank" class="odin-link">
-        Full Stack Ruby on Rails curriculum
-      </a>
-       by The Odin Project.<br>
-       <br>
-       Select the area you're currently working on or struggling with to explore exercises
-      and connect with students who are ready to help you right away.
-    </p>
-  </div>
+    <div class="guidance__box">
+      <p class="guidance__box--text">
+      This page contains the topics from the
+        <a href="https://www.theodinproject.com/paths/full-stack-ruby-on-rails" target="_blank" class="odin-link">
+          Full Stack Ruby on Rails curriculum
+        </a>
+        by The Odin Project.<br>
+        <br>
+        Select the area you're currently working on or struggling with to explore exercises
+        and connect with students who are ready to help you right away.
+      </p>
+    </div>
 
-  <div class="topic-grid">
-    <%
-      topic_styles = {
-        "Ruby" => { class: "ruby-card" },
-        "Intermediate HTML and CSS" => { class: "html-card" },
-        "Databases" => { class: "db-card" },
-        "Ruby on Rails" => { class: "rails-card" },
-        "Advanced HTML and CSS" => { class: "adv-html-card" },
-        "JavaScript" => { class: "js-card" },
-        "React" => { class: "react-card" },
-        "Getting Hired" => { class: "job-card" },
-        "default" => { class: "ruby-card"}
-      }
-    %>
-
-    <% @odin_chapters.each do |chapter| %>
-      <% style = topic_styles[chapter.name] || topic_styles["default"] %>
-
-      <div class="topic__card <%= style[:class] %>">
-        <%# <%= link_to(chapter_path(chapter), class: "topic-card-link") do %>
-          <div class="topic__card--content">
-            <div class="topic-icon">
-              <%= raw chapter.icon %>
-            </div>
-            <h3 class="topic-title"><%= chapter.name %></h3>
-            <p class="topic-desc"><%= chapter.description %></p>
-          </div>
-        <%# end %>
-      </div>
-    <% end %>
-  </div>
+    <div class="topic-grid">
+      <% @chapters.each do |chapter| %>
+        <%= render partial: "odin_chapter", locals: { chapter: chapter } %>
+      <% end %>
+    </div>
+  <% else %>
+  <% end %>
 </div>

@@ -1,0 +1,26 @@
+<%
+  topic_styles = {
+    "Setup" => { class: "job-card" },
+    "Ruby" => { class: "ruby-card" },
+    "OOP" => { class: "html-card" },
+    "DB" => { class: "db-card" },
+    "FRONT" => { class: "adv-html-card" },
+    "Rails" => { class: "rails-card" },
+    "Projects" => { class: "js-card" },
+    "default" => { class: "ruby-card"}
+  }
+%>
+
+<% style = topic_styles[chapter.name] || topic_styles["default"] %>
+
+<div class="topic__card <%= style[:class] %>">
+  <%# <%= link_to(chapter_path(chapter), class: "topic-card-link") do %>
+    <div class="topic__card--content">
+      <div class="topic-icon">
+        <%= raw chapter.icon %>
+      </div>
+      <h3 class="topic-title"><%= chapter.name %></h3>
+      <p class="topic-desc"><%= chapter.description %></p>
+    </div>
+  <%# end %>
+</div>

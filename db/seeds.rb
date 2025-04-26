@@ -49,7 +49,8 @@ le_chapters.each do |chapter|
   Chapter.create!(
     name: chapter["title"],
     url: chapter["url"],
-    icon: chapter["icon"]
+    icon: chapter["icon"],
+    source: "le_wagon"
   )
 end
 

@@ -23,5 +23,10 @@
       <% end %>
     </div>
   <% else %>
+    <div class="topic-grid">
+      <% @chapters.each do |chapter| %>
+        <%= render partial: "lewagon_chapter", locals: { chapter: chapter } %>
+      <% end %>
+    </div>
   <% end %>
 </div>
